@@ -1,0 +1,118 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.header{
+    background: top / cover no-repeat url(images/bg-mobile-light.jpg);
+    color: #fff;
+    padding: 40px 25px 70px 25px;
+    z-index: 1;
+}
+
+.header-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.title{
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.theme-switch{
+    width: fit-content;
+}
+
+.input-group{
+    display: flex;
+    width: 100%;
+    padding: 15px 10px;
+    background: #fff;
+    border: solid 1px transparent;
+    border-radius: 6px;
+}
+
+.checkbox{
+    width: 25px;
+    height: 25px;
+    border: solid 1px hsl(233, 11%, 84%);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.input-group input{
+    border: none;
+}
+
+.input-group input::placeholder{
+    font-family: "Josefin Sans", sans-serif;
+    color: hsl(236, 9%, 61%);
+}
+
+.main{
+    padding: 0 25px 50px 25px;
+}
+
+.todo-list{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    box-shadow: 10px 15px 20px hsl(234, 39%, 85%), -10px 0px 20px hsl(234, 39%, 85%);
+    position: relative;
+    top: -25px;
+    z-index: 2;
+}
+
+.todo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: solid 1px transparent;
+    border-bottom-color: hsl(233, 11%, 84%);
+    padding: 15px 20px;
+    background: #fff;
+}
+
+.todo:first-child{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.delete-icon{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+
+.info-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 1px transparent;
+    padding: 15px 20px;
+    background: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: hsl(236, 9%, 61%);
+    font-size: 15px;
+}
+
+.clear-completed{
+    border: none;
+    background: transparent;
+    font-family: "Josefin Sans", sans-serif;
+    color: hsl(236, 9%, 61%);
+}
+
+
+
