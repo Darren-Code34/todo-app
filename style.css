@@ -6,6 +6,8 @@
 
 body{
     font-family: "Josefin Sans", sans-serif;
+    height: 100%;
+    background: #fff;
 }
 
 .header{
@@ -30,6 +32,10 @@ body{
 .theme-switch{
     width: fit-content;
 }
+.theme-image{
+    width: 26px;
+    height: 26px;
+}
 
 .input-group{
     display: flex;
@@ -38,6 +44,10 @@ body{
     background: #fff;
     border: solid 1px transparent;
     border-radius: 6px;
+}
+
+.input-group input{
+    background: transparent;
 }
 
 .checkbox{
@@ -59,10 +69,12 @@ body{
 
 .main{
     padding: 0 25px 50px 25px;
+    margin-bottom: 30px;
+    background: transparent;
 }
 
 .todo-list{
-    width: 300px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
@@ -70,6 +82,7 @@ body{
     position: relative;
     top: -25px;
     z-index: 2;
+    background: #fff;
 }
 
 .todo{
@@ -79,7 +92,8 @@ body{
     border: solid 1px transparent;
     border-bottom-color: hsl(233, 11%, 84%);
     padding: 15px 20px;
-    background: #fff;
+    font-size: 13px;
+    background: transparent;
 }
 
 .todo:first-child{
@@ -100,7 +114,7 @@ body{
     align-items: center;
     border: solid 1px transparent;
     padding: 15px 20px;
-    background: #fff;
+    background: transparent;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     color: hsl(236, 9%, 61%);
@@ -115,4 +129,74 @@ body{
 }
 
 
+.status{
+    position: absolute;
+    margin-top: 20px;
+    background: #fff;
+    padding: 15px 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 10px 15px 20px hsl(234, 39%, 85%), -10px 0px 20px hsl(234, 39%, 85%);
+}
 
+.status button{
+    border: none;
+    background: transparent;
+    font-family: "Josefin Sans", sans-serif;
+    color: hsl(236, 9%, 61%);
+    font-weight: 600;
+}
+
+.status button:not(:last-child){
+    margin-right: 10px;
+}
+
+.status button.active{
+    color: hsl(220, 98%, 61%);
+}
+
+.information{
+    text-align: center;
+    color: hsl(236, 9%, 61%);
+    margin-bottom: 50px;
+}
+
+.attribution{
+    margin-bottom: 30px;
+}
+
+/* dark mode */
+
+body.dark{
+    background: hsl(235, 21%, 11%);
+}
+
+.header.dark{
+    background: top / cover no-repeat url(images/bg-mobile-dark.jpg);
+}
+
+.input-group.dark{
+    background: hsl(235, 24%, 19%);
+}
+
+.todo-list.dark{
+    background: hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+    box-shadow: 2px 2px 5px hsl(240, 7%, 15%), -2px 0px 5px hsl(240, 7%, 15%);
+}
+
+.todo-list.dark .todo{
+    border-bottom-color: hsl(233, 14%, 35%);
+}
+
+.status.dark{
+    background: hsl(235, 24%, 19%);
+    color: hsl(234, 11%, 52%);
+    box-shadow: 2px 2px 5px hsl(240, 7%, 15%), -2px 0px 5px hsl(240, 7%, 15%);
+}
+
+.information.dark{
+    color: hsl(233, 14%, 35%);
+}

@@ -7,6 +7,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
   
   <title>Frontend Mentor | Todo app</title>
 
@@ -23,7 +24,7 @@
       <h1 class="title">Todo</h1>
       
       <div class="theme-switch">
-        <img src="/images/icon-moon.svg" alt="moon icon">
+        <img src="/images/icon-moon.svg" alt="moon icon" class="theme-image">
       </div>
     </div>
     <form class="todo-form">
@@ -46,33 +47,21 @@
   
         <button class="clear-completed">Clear Completed</button>
       </div>
-    </div>
 
+      <div class="status">
+        <button class="status1 active">All</button>
+        <button class="status1">Active</button>
+        <button class="status2">Completed</button>
+      </div>
+    </div>
     
-
-    <div class="status">
-      <button class="all">All</button>
-      <button class="active">Active</button>
-      <button class="completed">Completed</button>
-    </div>
-
-    <p class="information"> Drag and drop to reorder list</p>
   </main>
-  
 
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
+  <p class="information"> Drag and drop to reorder list</p>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Darren Mibissa</a>.
   </div>
 </body>
 </html>
