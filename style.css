@@ -46,10 +46,6 @@ body{
     border-radius: 6px;
 }
 
-.input-group input{
-    background: transparent;
-}
-
 .checkbox{
     width: 25px;
     height: 25px;
@@ -58,13 +54,25 @@ body{
     margin-right: 10px;
 }
 
-.input-group input{
-    border: none;
+.checkbox.checked{
+    background: center / 50% no-repeat url(images/icon-check.svg), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-.input-group input::placeholder{
+#task-input{
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+
+#task-input::placeholder{
     font-family: "Josefin Sans", sans-serif;
     color: hsl(236, 9%, 61%);
+}
+
+#task-input.error::placeholder{
+    color: red;
+    font-weight: 600;
 }
 
 .main{
