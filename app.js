@@ -87,18 +87,6 @@ function addTask(e){
 
     }
 
-    //Delete a task
-
-    const deleteIcons = document.querySelectorAll(".delete-icon");
-
-    deleteIcons.forEach(deleteIcon =>{
-        deleteIcon.addEventListener("click", deleteTask);
-
-        function deleteTask(){
-            deleteIcon.parentElement.style.display = "none";
-        }
-    })
-
 
     //mark a task done
 
@@ -114,14 +102,61 @@ function addTask(e){
                 checkbox.classList.add("checked");
                 checkbox.nextSibling.style.textDecoration = "line-through";
                 isChecked = true;
+                calculateNumberItems();
             }
             else{
                 checkbox.classList.remove("checked");
                 checkbox.nextSibling.style.textDecoration = "none";
                 isChecked = false;
+                calculateNumberItems();
             }
         }
     })
 
+
+    // display the number of items left
+
+    const ItemsLeft = document.querySelector(".number");
+    let numberItemsLeft;
+
+    function calculateNumberItems(){
+        
+        const numberCheckboxes = checkboxes.length ;
+        const numberTaskchecked = document.querySelectorAll(".checked").length;
+        
+
+        numberItemsLeft = numberCheckboxes - numberTaskchecked;
+
+        ItemsLeft.textContent = numberItemsLeft;
+
+    }
+
+    calculateNumberItems()
+
+
+    //Delete a task
+
+    const deleteIcons = document.querySelectorAll(".delete-icon");
+
+    deleteIcons.forEach(deleteIcon =>{
+        deleteIcon.addEventListener("click", deleteTask);
+    
+        function deleteTask(){
+            deleteIcon.parentElement.style.display = "none";
+        }
+    })
+
+
+    //clear completed task
+
+    const clearCompleted = document.querySelector(".clear-completed");
+    clearCompleted.addEventListener("click", clearTaskCompleted);
+
+    function clearTaskCompleted(){
+        const tasksChecked = document.querySelectorAll(".checked");
+        tasksChecked.forEach(taskChecked =>{
+            taskChecked.parentElement.style.display = "none";
+        })
+    }
 }
 

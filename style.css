@@ -46,6 +46,14 @@ body{
     border-radius: 6px;
 }
 
+.input-checkbox{
+    width: 25px;
+    height: 25px;
+    border: solid 1px hsl(233, 11%, 84%);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 .checkbox{
     width: 25px;
     height: 25px;
@@ -59,6 +67,7 @@ body{
 }
 
 #task-input{
+    width: 100%;
     background: transparent;
     border: none;
     outline: none;
@@ -187,6 +196,10 @@ body.dark{
 
 .input-group.dark{
     background: hsl(235, 24%, 19%);
+}
+
+.input-group.dark #task-input{
+    color: hsl(234, 39%, 85%);
 }
 
 .todo-list.dark{
