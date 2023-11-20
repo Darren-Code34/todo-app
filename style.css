@@ -47,7 +47,7 @@ body{
 }
 
 .input-checkbox{
-    width: 25px;
+    width: 27px;
     height: 25px;
     border: solid 1px hsl(233, 11%, 84%);
     border-radius: 50%;
@@ -146,7 +146,7 @@ body{
 }
 
 
-.status{
+.statuses-group{
     position: absolute;
     margin-top: 20px;
     background: #fff;
@@ -158,7 +158,7 @@ body{
     box-shadow: 10px 15px 20px hsl(234, 39%, 85%), -10px 0px 20px hsl(234, 39%, 85%);
 }
 
-.status button{
+.status{
     border: none;
     background: transparent;
     font-family: "Josefin Sans", sans-serif;
@@ -166,11 +166,11 @@ body{
     font-weight: 600;
 }
 
-.status button:not(:last-child){
+.status:not(:last-child){
     margin-right: 10px;
 }
 
-.status button.active{
+.status.active{
     color: hsl(220, 98%, 61%);
 }
 
@@ -212,7 +212,7 @@ body.dark{
     border-bottom-color: hsl(233, 14%, 35%);
 }
 
-.status.dark{
+.statuses-group.dark{
     background: hsl(235, 24%, 19%);
     color: hsl(234, 11%, 52%);
     box-shadow: 2px 2px 5px hsl(240, 7%, 15%), -2px 0px 5px hsl(240, 7%, 15%);

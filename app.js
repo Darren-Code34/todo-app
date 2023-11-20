@@ -6,7 +6,7 @@ const themeImage = document.querySelector(".theme-image");
 const body = document.querySelector("body");
 const inputGroup = document.querySelector(".input-group");
 const todoList = document.querySelector(".todo-list");
-const status = document.querySelector(".status");
+const statusesGroup = document.querySelector(".statuses-group");
 const information = document.querySelector(".information");
 
 themeSwitch.addEventListener("click", changeTheme);
@@ -20,7 +20,7 @@ function changeTheme(){
         body.classList.add("dark");
         inputGroup.classList.add("dark");
         todoList.classList.add("dark");
-        status.classList.add("dark");
+        statusesGroup.classList.add("dark");
         information.classList.add("dark");
 
         isDark = true;
@@ -32,14 +32,13 @@ function changeTheme(){
         body.classList.remove("dark");
         inputGroup.classList.remove("dark");
         todoList.classList.remove("dark");
-        status.classList.remove("dark");
+        statusesGroup.classList.remove("dark");
         information.classList.remove("dark");
 
         isDark = false;
     }
 
 }
-
 
 
 const todoForm = document.querySelector(".todo-form");
@@ -51,13 +50,18 @@ todoForm.addEventListener("submit", addTask)
 
 //add a task
 
+let todo;
+let checkbox;
+let todoName;
+let deleteIcon;
+
 function addTask(e){
     e.preventDefault()
 
-    const todo = document.createElement("div");
-    const checkbox = document.createElement("div");
-    const todoName = document.createElement("p");
-    const deleteIcon = document.createElement("img");
+    todo = document.createElement("div");
+    checkbox = document.createElement("div");
+    todoName = document.createElement("p");
+    deleteIcon = document.createElement("img");
 
     if(taskInput.value === ""){
         taskInput.classList.add("error");
@@ -71,11 +75,14 @@ function addTask(e){
         todo.classList.add("todo");
 
         checkbox.classList.add("checkbox");
+        checkbox.addEventListener("click", checkTask);
+        checkbox.isChecked = false;
 
         todoName.textContent = taskInput.value;
         todoName.classList.add("todo-name");
 
         deleteIcon.src = "/images/icon-cross.svg";
+        deleteIcon.addEventListener("click", deleteTask);
         deleteIcon.classList.add("delete-icon");
 
         todo.appendChild(checkbox);
@@ -83,80 +90,60 @@ function addTask(e){
         todo.appendChild(deleteIcon);
         todoList.insertBefore(todo, infoBar);
 
+        calculateNumberItems(1);
+
         taskInput.value = "";
-
     }
+}
 
+// check a task
 
-    //mark a task done
-
-    const checkboxes = document.querySelectorAll(".checkbox");
-
-    checkboxes.forEach(checkbox =>{
-        checkbox.addEventListener("click", checkTask);
-
-        let isChecked = false;
-
-        function checkTask(){
-            if(isChecked === false){
-                checkbox.classList.add("checked");
-                checkbox.nextSibling.style.textDecoration = "line-through";
-                isChecked = true;
-                calculateNumberItems();
-            }
-            else{
-                checkbox.classList.remove("checked");
-                checkbox.nextSibling.style.textDecoration = "none";
-                isChecked = false;
-                calculateNumberItems();
-            }
-        }
-    })
-
-
-    // display the number of items left
-
-    const ItemsLeft = document.querySelector(".number");
-    let numberItemsLeft;
-
-    function calculateNumberItems(){
-        
-        const numberCheckboxes = checkboxes.length ;
-        const numberTaskchecked = document.querySelectorAll(".checked").length;
-        
-
-        numberItemsLeft = numberCheckboxes - numberTaskchecked;
-
-        ItemsLeft.textContent = numberItemsLeft;
-
+function checkTask(){
+    if(this.isChecked === false){
+        this.classList.add("checked");
+        this.nextSibling.style.textDecoration = "line-through";
+        this.isChecked = true;
     }
+    else{
+        this.classList.remove("checked");
+        this.nextSibling.style.textDecoration = "none";
+        this.isChecked = false;
+    }
+}
 
-    calculateNumberItems()
+//Delete a task
 
+function deleteTask(){
+    this.parentElement.style.display = "none";
+    calculateNumberItems(-1);
+}
 
-    //Delete a task
-
-    const deleteIcons = document.querySelectorAll(".delete-icon");
-
-    deleteIcons.forEach(deleteIcon =>{
-        deleteIcon.addEventListener("click", deleteTask);
-    
-        function deleteTask(){
-            deleteIcon.parentElement.style.display = "none";
-        }
-    })
-
-
-    //clear completed task
+//clear completed task
 
     const clearCompleted = document.querySelector(".clear-completed");
     clearCompleted.addEventListener("click", clearTaskCompleted);
 
     function clearTaskCompleted(){
         const tasksChecked = document.querySelectorAll(".checked");
+        const numberTaskchecked = tasksChecked.length
         tasksChecked.forEach(taskChecked =>{
             taskChecked.parentElement.style.display = "none";
         })
+        calculateNumberItems(-numberTaskchecked);
+
     }
+
+
+// display the number of items left
+
+const ItemsLeft = document.querySelector(".number");
+let numberItemsLeft = 0;
+
+function calculateNumberItems(number){
+
+    numberItemsLeft += number
+
+    ItemsLeft.textContent = numberItemsLeft;
+
 }
 
