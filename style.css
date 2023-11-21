@@ -146,7 +146,7 @@ body{
 }
 
 
-.statuses-group{
+.filter-group{
     position: absolute;
     margin-top: 20px;
     background: #fff;
@@ -169,8 +169,7 @@ body{
 .status:not(:last-child){
     margin-right: 10px;
 }
-
-.status.active{
+button.active{
     color: hsl(220, 98%, 61%);
 }
 
@@ -212,7 +211,7 @@ body.dark{
     border-bottom-color: hsl(233, 14%, 35%);
 }
 
-.statuses-group.dark{
+.filter-group.dark{
     background: hsl(235, 24%, 19%);
     color: hsl(234, 11%, 52%);
     box-shadow: 2px 2px 5px hsl(240, 7%, 15%), -2px 0px 5px hsl(240, 7%, 15%);
@@ -221,3 +220,10 @@ body.dark{
 .information.dark{
     color: hsl(233, 14%, 35%);
 }
+
+
+/* filter style */
+
+/* .todo.hidden{
+    display: none;
+} */

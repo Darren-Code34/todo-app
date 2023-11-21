@@ -6,7 +6,7 @@ const themeImage = document.querySelector(".theme-image");
 const body = document.querySelector("body");
 const inputGroup = document.querySelector(".input-group");
 const todoList = document.querySelector(".todo-list");
-const statusesGroup = document.querySelector(".statuses-group");
+const filterGroup = document.querySelector(".filter-group");
 const information = document.querySelector(".information");
 
 themeSwitch.addEventListener("click", changeTheme);
@@ -20,7 +20,7 @@ function changeTheme(){
         body.classList.add("dark");
         inputGroup.classList.add("dark");
         todoList.classList.add("dark");
-        statusesGroup.classList.add("dark");
+        filterGroup.classList.add("dark");
         information.classList.add("dark");
 
         isDark = true;
@@ -32,7 +32,7 @@ function changeTheme(){
         body.classList.remove("dark");
         inputGroup.classList.remove("dark");
         todoList.classList.remove("dark");
-        statusesGroup.classList.remove("dark");
+        filterGroup.classList.remove("dark");
         information.classList.remove("dark");
 
         isDark = false;
@@ -145,5 +145,64 @@ function calculateNumberItems(number){
 
     ItemsLeft.textContent = numberItemsLeft;
 
+}
+
+//filter task
+
+const filterAll = document.querySelector("button.filter-all");
+const filterActive = document.querySelector("button.filter-active");
+const filterCompleted = document.querySelector("button.filter-completed");
+
+filterAll.addEventListener("click", displayAllTask);
+filterActive.addEventListener("click", displayActiveTask);
+filterCompleted.addEventListener("click", displayCompletedTask);
+
+
+function displayActiveTask(){
+
+    const checkboxes = document.querySelectorAll(".checkbox");
+
+    checkboxes.forEach(checkbox =>{
+        if(checkbox.classList.contains("checked")){
+            checkbox.parentElement.style.display = "none";
+        }
+        else{
+            checkbox.parentElement.style.display = "flex";
+        }
+    })
+
+    filterAll.classList.remove("active");
+    filterCompleted.classList.remove("active");
+    filterActive.classList.add("active");
+}
+
+
+function displayCompletedTask(){
+    const checkboxes = document.querySelectorAll(".checkbox");
+
+    checkboxes.forEach(checkbox =>{
+        if(checkbox.classList.contains("checked")){
+            checkbox.parentElement.style.display = "flex";
+        }
+        else{
+            checkbox.parentElement.style.display = "none";
+        }
+    })
+
+    filterAll.classList.remove("active");
+    filterCompleted.classList.add("active");
+    filterActive.classList.remove("active");
+}
+
+function displayAllTask(){
+    const checkboxes = document.querySelectorAll(".checkbox");
+
+    checkboxes.forEach(checkbox =>{
+        checkbox.parentElement.style.display = "flex";
+    })
+
+    filterAll.classList.add("active");
+    filterCompleted.classList.remove("active");
+    filterActive.classList.remove("active");
 }
 
