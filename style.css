@@ -90,7 +90,7 @@ body{
     background: transparent;
 }
 
-.todo-list{
+.container{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -201,14 +201,18 @@ body.dark{
     color: hsl(234, 39%, 85%);
 }
 
-.todo-list.dark{
+.container.dark{
     background: hsl(235, 24%, 19%);
     color: hsl(234, 39%, 85%);
     box-shadow: 2px 2px 5px hsl(240, 7%, 15%), -2px 0px 5px hsl(240, 7%, 15%);
 }
 
-.todo-list.dark .todo{
+.container.dark .todo{
     border-bottom-color: hsl(233, 14%, 35%);
+}
+
+.info-bar.dark{
+    background: hsl(235, 24%, 19%);
 }
 
 .filter-group.dark{
@@ -221,9 +225,8 @@ body.dark{
     color: hsl(233, 14%, 35%);
 }
 
+/* dragging  and droping*/
 
-/* filter style */
-
-/* .todo.hidden{
-    display: none;
-} */
+.todo.dragging{
+    opacity: 0.6;
+}

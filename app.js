@@ -6,8 +6,11 @@ const themeImage = document.querySelector(".theme-image");
 const body = document.querySelector("body");
 const inputGroup = document.querySelector(".input-group");
 const todoList = document.querySelector(".todo-list");
+const container = document.querySelector(".container");
+const infoBar = document.querySelector(".info-bar");
 const filterGroup = document.querySelector(".filter-group");
 const information = document.querySelector(".information");
+
 
 themeSwitch.addEventListener("click", changeTheme);
 
@@ -19,7 +22,9 @@ function changeTheme(){
         themeImage.src = "images/icon-sun.svg";
         body.classList.add("dark");
         inputGroup.classList.add("dark");
+        container.classList.add("dark");
         todoList.classList.add("dark");
+        infoBar.classList.add("dark");
         filterGroup.classList.add("dark");
         information.classList.add("dark");
 
@@ -31,7 +36,9 @@ function changeTheme(){
         themeImage.src = "images/icon-moon.svg";
         body.classList.remove("dark");
         inputGroup.classList.remove("dark");
+        container.classList.remove("dark");
         todoList.classList.remove("dark");
+        infoBar.classList.remove("dark");
         filterGroup.classList.remove("dark");
         information.classList.remove("dark");
 
@@ -43,7 +50,6 @@ function changeTheme(){
 
 const todoForm = document.querySelector(".todo-form");
 const taskInput = document.querySelector("#task-input");
-const infoBar = document.querySelector(".info-bar");
 
 
 todoForm.addEventListener("submit", addTask)
@@ -73,6 +79,11 @@ function addTask(e){
     }
     else{
         todo.classList.add("todo");
+        todo.setAttribute("draggable", "true");
+        todo.addEventListener("dragstart",()=>{
+            setTimeout(()=>todo.classList.add("dragging"),0)
+        })
+        todo.addEventListener("dragend", ()=> todo.classList.remove("dragging"));
 
         checkbox.classList.add("checkbox");
         checkbox.addEventListener("click", checkTask);
@@ -88,7 +99,8 @@ function addTask(e){
         todo.appendChild(checkbox);
         todo.appendChild(todoName);
         todo.appendChild(deleteIcon);
-        todoList.insertBefore(todo, infoBar);
+        todoList.appendChild(todo);
+        console.log(todoList);
 
         calculateNumberItems(1);
 
@@ -114,24 +126,29 @@ function checkTask(){
 //Delete a task
 
 function deleteTask(){
-    this.parentElement.style.display = "none";
+    this.parentElement.remove();
     calculateNumberItems(-1);
 }
 
 //clear completed task
 
-    const clearCompleted = document.querySelector(".clear-completed");
-    clearCompleted.addEventListener("click", clearTaskCompleted);
+const clearCompleted = document.querySelector(".clear-completed");
+clearCompleted.addEventListener("click", clearTaskCompleted);
 
-    function clearTaskCompleted(){
-        const tasksChecked = document.querySelectorAll(".checked");
-        const numberTaskchecked = tasksChecked.length
+function clearTaskCompleted(){
+    const tasksChecked = todoList.querySelectorAll(".checked");
+    let numberTaskchecked = tasksChecked.length;
+    console.log(numberTaskchecked);
+        
+    if(todoList.length === 0 || numberTaskchecked === 0) return
+    else{
         tasksChecked.forEach(taskChecked =>{
-            taskChecked.parentElement.style.display = "none";
+            taskChecked.parentElement.remove();
         })
         calculateNumberItems(-numberTaskchecked);
-
     }
+
+}
 
 
 // display the number of items left
@@ -206,3 +223,23 @@ function displayAllTask(){
     filterActive.classList.remove("active");
 }
 
+//drag and drop
+
+todoList.addEventListener("dragover", sortableTodolist);
+todoList.addEventListener("dragenter", (e)=> e.preventDefault());
+
+function sortableTodolist(e){
+    e.preventDefault();
+    const dragginItem = document.querySelector(".dragging");
+    
+
+    let siblings = [...todoList.querySelectorAll(".todo:not(.dragging)")];
+
+    let nextSibling = siblings.find(sibling => {
+        console.log(sibling.offsetTop, sibling.offsetHeight / 2);
+        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+    })
+    // console.log(nextSibling);
+
+    todoList.insertBefore(dragginItem, nextSibling);
+}
