@@ -28,10 +28,17 @@ body{
 .title{
     width: fit-content;
     text-transform: uppercase;
+    cursor: pointer;
+}
+
+.title a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .theme-switch{
     width: fit-content;
+    cursor: pointer;
 }
 .theme-image{
     width: 26px;
@@ -61,6 +68,7 @@ body{
     border: solid 1px hsl(233, 11%, 84%);
     border-radius: 50%;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .checkbox.checked{
@@ -122,6 +130,7 @@ body{
 .delete-icon{
     margin-right: 0;
     margin-left: auto;
+    cursor: pointer;
 }
 
 
@@ -144,6 +153,7 @@ body{
     background: transparent;
     font-family: "Josefin Sans", sans-serif;
     color: hsl(236, 9%, 61%);
+    cursor: pointer;
 }
 
 
@@ -165,6 +175,7 @@ body{
     font-family: "Josefin Sans", sans-serif;
     color: hsl(236, 9%, 61%);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .status:not(:last-child){
