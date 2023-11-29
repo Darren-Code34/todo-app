@@ -100,7 +100,6 @@ function addTask(e){
         todo.appendChild(todoName);
         todo.appendChild(deleteIcon);
         todoList.appendChild(todo);
-        console.log(todoList);
 
         calculateNumberItems(1);
 
